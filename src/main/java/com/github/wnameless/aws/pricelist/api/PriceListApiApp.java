@@ -18,15 +18,28 @@ package com.github.wnameless.aws.pricelist.api;
 import java.io.IOException;
 
 import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
+import com.github.wnameless.aws.pricelist.api.model.product.Product;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
 
 public class PriceListApiApp {
 
   public static void main(String[] args) throws IOException {
-    PriceListApi.INSTANCE.enableLogger();
+    // PriceListApi.INSTANCE.enableLogger();
 
-    for (var p : AWSProduct.values()) {
-      OfferIndex.get().getOffer(p).getProductIndex().getCurrentProductVersion();
+    // Set<String> attrs = new LinkedHashSet<>();
+
+    for (var pn : AWSProduct.values()) {
+      System.out.println(pn);
+
+      ProductVersion pv = OfferIndex.get().getOffer(pn).getProductIndex()
+          .getCurrentProductVersion();
+
+      for (Product p : pv.getProducts().values()) {
+        System.out.println(p.getAttributes().getOtherAttributes());
+      }
     }
+
+    // System.out.println(attrs);
   }
 
 }

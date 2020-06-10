@@ -15,8 +15,6 @@
  */
 package com.github.wnameless.aws.pricelist.api.model.product;
 
-import java.util.Map;
-
 import lombok.Data;
 
 @Data
@@ -24,6 +22,6 @@ public class Product {
 
   String sku;
   String productFamily;
-  Map<String, String> attributes;
+  ProductAttributes attributes;
 
 }
