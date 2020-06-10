@@ -21,12 +21,12 @@ import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.Product;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
 
+import okhttp3.logging.HttpLoggingInterceptor.Level;
+
 public class PriceListApiApp {
 
   public static void main(String[] args) throws IOException {
-    // PriceListApi.INSTANCE.enableLogger();
-
-    // Set<String> attrs = new LinkedHashSet<>();
+    PriceListApi.INSTANCE.setLoggingLevel(Level.BODY);
 
     for (var pn : AWSProduct.values()) {
       System.out.println(pn);
@@ -37,9 +37,9 @@ public class PriceListApiApp {
       for (Product p : pv.getProducts().values()) {
         System.out.println(p.getAttributes().getOtherAttributes());
       }
-    }
 
-    // System.out.println(attrs);
+      break;
+    }
   }
 
 }

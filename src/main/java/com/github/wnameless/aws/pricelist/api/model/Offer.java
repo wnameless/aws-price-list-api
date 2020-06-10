@@ -35,18 +35,17 @@ public class Offer {
   String currentSavingsPlanIndexUrl;
 
   public ProductIndex getProductIndex() throws IOException {
-    return PriceListApi.INSTANCE.productApi.productIndex(versionIndexUrl)
-        .execute().body();
+    return PriceListApi.INSTANCE.productIndex(versionIndexUrl).execute().body();
   }
 
   public ProductVersion getProductVersion() throws IOException {
-    return PriceListApi.INSTANCE.productApi.productVersion(currentVersionUrl)
-        .execute().body();
+    return PriceListApi.INSTANCE.productVersion(currentVersionUrl).execute()
+        .body();
   }
 
   public ProductRegionIndex getProductRegionIndex() throws IOException {
-    return PriceListApi.INSTANCE.productApi
-        .productRegionIndex(currentRegionIndexUrl).execute().body();
+    return PriceListApi.INSTANCE.productRegionIndex(currentRegionIndexUrl)
+        .execute().body();
   }
 
 }

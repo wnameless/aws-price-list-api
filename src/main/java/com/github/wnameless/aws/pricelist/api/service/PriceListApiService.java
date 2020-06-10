@@ -15,7 +15,11 @@
  */
 package com.github.wnameless.aws.pricelist.api.service;
 
-import com.github.wnameless.aws.pricelist.api.PriceListApiConstant;
+import com.github.wnameless.aws.pricelist.api.PriceListApi;
+import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductIndex;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanIndex;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanRegion;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanVersion;
@@ -24,10 +28,25 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface SavingsPlanApi {
+public interface PriceListApiService {
 
-  @GET(PriceListApiConstant.SAVINGS_PLAN_INDEX)
-  Call<SavingsPlanIndex> index();
+  @GET(PriceListApi.OFFER_INDEX_ENDPOINT)
+  Call<OfferIndex> offerIndex();
+
+  @GET("{url}")
+  Call<ProductIndex> productIndex(
+      @Path(value = "url", encoded = true) String url);
+
+  @GET("{url}")
+  Call<ProductVersion> productVersion(
+      @Path(value = "url", encoded = true) String url);
+
+  @GET("{url}")
+  Call<ProductRegionIndex> productRegionIndex(
+      @Path(value = "url", encoded = true) String url);
+
+  @GET(PriceListApi.SAVINGS_PLAN_INDEX_ENDPOINT)
+  Call<SavingsPlanIndex> savingsPlanIndex();
 
   @GET("{url}")
   Call<SavingsPlanVersion> savingsPlanVersion(

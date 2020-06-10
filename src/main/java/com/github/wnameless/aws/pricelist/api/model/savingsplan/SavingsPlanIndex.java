@@ -26,7 +26,7 @@ import lombok.Data;
 public class SavingsPlanIndex {
 
   public static SavingsPlanIndex get() throws IOException {
-    return PriceListApi.INSTANCE.savingsPlanApi.index().execute().body();
+    return PriceListApi.INSTANCE.savingsPlanIndex().execute().body();
   }
 
   String disclaimer;
@@ -36,8 +36,8 @@ public class SavingsPlanIndex {
   String formatVersion;
 
   public SavingsPlanVersion getCurrentVersion() throws IOException {
-    return PriceListApi.INSTANCE.savingsPlanApi
-        .savingsPlanVersion(currentOfferVersionUrl).execute().body();
+    return PriceListApi.INSTANCE.savingsPlanVersion(currentOfferVersionUrl)
+        .execute().body();
   }
 
 }

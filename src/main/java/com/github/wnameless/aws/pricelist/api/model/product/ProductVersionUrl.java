@@ -29,8 +29,8 @@ public class ProductVersionUrl {
   String offerVersionUrl;
 
   public ProductVersion getProductVersion() throws IOException {
-    return PriceListApi.INSTANCE.productApi.productVersion(offerVersionUrl)
-        .execute().body();
+    return PriceListApi.INSTANCE.productVersion(offerVersionUrl).execute()
+        .body();
   }
 
 }

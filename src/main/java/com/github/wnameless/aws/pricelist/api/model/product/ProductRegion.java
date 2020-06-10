@@ -28,8 +28,8 @@ public class ProductRegion {
   String currentVersionUrl;
 
   public ProductVersion getProductVersion() throws IOException {
-    return PriceListApi.INSTANCE.productApi.productVersion(currentVersionUrl)
-        .execute().body();
+    return PriceListApi.INSTANCE.productVersion(currentVersionUrl).execute()
+        .body();
   }
 
 }

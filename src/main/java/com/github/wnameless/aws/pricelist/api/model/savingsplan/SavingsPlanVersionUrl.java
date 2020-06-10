@@ -28,8 +28,8 @@ public class SavingsPlanVersionUrl {
   String offerVersionUrl;
 
   public SavingsPlanVersion getSavingsPlanVersion() throws IOException {
-    return PriceListApi.INSTANCE.savingsPlanApi
-        .savingsPlanVersion(offerVersionUrl).execute().body();
+    return PriceListApi.INSTANCE.savingsPlanVersion(offerVersionUrl).execute()
+        .body();
   }
 
 }

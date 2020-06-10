@@ -15,67 +15,87 @@
  */
 package com.github.wnameless.aws.pricelist.api;
 
-import com.github.wnameless.aws.pricelist.api.service.OfferApi;
-import com.github.wnameless.aws.pricelist.api.service.ProductApi;
-import com.github.wnameless.aws.pricelist.api.service.SavingsPlanApi;
+import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductIndex;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
+import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanIndex;
+import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanRegion;
+import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanVersion;
+import com.github.wnameless.aws.pricelist.api.service.PriceListApiService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.logging.HttpLoggingInterceptor.Level;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-public enum PriceListApi {
+public enum PriceListApi implements PriceListApiService {
 
   INSTANCE;
 
-  public OfferApi offerApi;
-  public ProductApi productApi;
-  public SavingsPlanApi savingsPlanApi;
+  public static final String BASE_URL =
+      "https://pricing.us-east-1.amazonaws.com";
+  public static final String OFFER_INDEX_ENDPOINT = //
+      "/offers/v1.0/aws/index.json";
+  public static final String SAVINGS_PLAN_INDEX_ENDPOINT =
+      "/savingsPlan/v1.0/aws/AWSComputeSavingsPlan/current/index.json";
 
-  private OkHttpClient.Builder defaultBuilder = new OkHttpClient.Builder();
+  private final HttpLoggingInterceptor interceptor =
+      new HttpLoggingInterceptor();
+  private final PriceListApiService service;
+
+  public Level getLoggingLevel() {
+    return interceptor.getLevel();
+  }
+
+  public void setLoggingLevel(Level level) {
+    interceptor.setLevel(level);
+  }
 
   private PriceListApi() {
-    OkHttpClient client = getDefaultBuilder().build();
-    Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(PriceListApiConstant.ENDPOINT).client(client)
-        .addConverterFactory(JacksonConverterFactory.create()).build();
-
-    offerApi = retrofit.create(OfferApi.class);
-    productApi = retrofit.create(ProductApi.class);
-    savingsPlanApi = retrofit.create(SavingsPlanApi.class);
-  }
-
-  public OkHttpClient.Builder getDefaultBuilder() {
-    return defaultBuilder;
-  }
-
-  public void setDefaultBuilder(OkHttpClient.Builder defaultBuilder) {
-    this.defaultBuilder = defaultBuilder;
-  }
-
-  public void enableLogger() {
-    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-    interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
     OkHttpClient client =
-        getDefaultBuilder().addInterceptor(interceptor).build();
-    Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(PriceListApiConstant.ENDPOINT).client(client)
+        new OkHttpClient.Builder().addInterceptor(interceptor).build();
+    Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client)
         .addConverterFactory(JacksonConverterFactory.create()).build();
 
-    offerApi = retrofit.create(OfferApi.class);
-    productApi = retrofit.create(ProductApi.class);
-    savingsPlanApi = retrofit.create(SavingsPlanApi.class);
+    service = retrofit.create(PriceListApiService.class);
   }
 
-  public void disableLogger() {
-    OkHttpClient client = getDefaultBuilder().build();
-    Retrofit retrofit = new Retrofit.Builder()
-        .baseUrl(PriceListApiConstant.ENDPOINT).client(client)
-        .addConverterFactory(JacksonConverterFactory.create()).build();
+  @Override
+  public Call<OfferIndex> offerIndex() {
+    return service.offerIndex();
+  }
 
-    offerApi = retrofit.create(OfferApi.class);
-    productApi = retrofit.create(ProductApi.class);
-    savingsPlanApi = retrofit.create(SavingsPlanApi.class);
+  @Override
+  public Call<ProductIndex> productIndex(String url) {
+    return service.productIndex(url);
+  }
+
+  @Override
+  public Call<ProductVersion> productVersion(String url) {
+    return service.productVersion(url);
+  }
+
+  @Override
+  public Call<ProductRegionIndex> productRegionIndex(String url) {
+    return service.productRegionIndex(url);
+  }
+
+  @Override
+  public Call<SavingsPlanIndex> savingsPlanIndex() {
+    return service.savingsPlanIndex();
+  }
+
+  @Override
+  public Call<SavingsPlanVersion> savingsPlanVersion(String url) {
+    return service.savingsPlanVersion(url);
+  }
+
+  @Override
+  public Call<SavingsPlanRegion> savingsPlanRegion(String url) {
+    return service.savingsPlanRegion(url);
   }
 
 }

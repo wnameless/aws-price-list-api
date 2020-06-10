@@ -28,8 +28,7 @@ public class SavingsPlanRegionUrl {
   String versionUrl;
 
   public SavingsPlanRegion getSavingsPlanRegion() throws IOException {
-    return PriceListApi.INSTANCE.savingsPlanApi.savingsPlanRegion(versionUrl)
-        .execute().body();
+    return PriceListApi.INSTANCE.savingsPlanRegion(versionUrl).execute().body();
   }
 
 }

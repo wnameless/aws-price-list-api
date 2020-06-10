@@ -30,7 +30,7 @@ import lombok.Data;
 public class OfferIndex {
 
   public static OfferIndex get() throws IOException {
-    return PriceListApi.INSTANCE.offerApi.index().execute().body();
+    return PriceListApi.INSTANCE.offerIndex().execute().body();
   }
 
   String formatVersion;
