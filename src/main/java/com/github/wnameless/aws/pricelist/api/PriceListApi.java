@@ -33,7 +33,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
  * 
- * {@link PriceListApi } is an enum singleton which contains the only value
+ * {@link PriceListApi} is an enum singleton which contains the only value
  * {@link PriceListApi.INSTANCE}.
  * <p>
  * It creates an {@link OkHttpClient} to do all API requests which are defined
