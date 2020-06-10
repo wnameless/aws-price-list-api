@@ -5,7 +5,7 @@
 	<groupId>com.github.wnameless.aws</groupId>
 	<artifactId>aws-price-list-api</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	
+
 	<name>aws-price-list-api</name>
 	<description>A Java wrapper to Amazon AWS Price List (web) API</description>
 	<url>https://github.com/wnameless/aws-price-list-api</url>
@@ -79,9 +79,16 @@
 			<artifactId>logging-interceptor</artifactId>
 		</dependency>
 
+		<!-- Lang -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>1.3.1.Final</version>
 			<scope>provided</scope>
 		</dependency>
 

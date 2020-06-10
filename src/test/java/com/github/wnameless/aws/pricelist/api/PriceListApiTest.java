@@ -13,27 +13,25 @@
  * the License.
  *
  */
-package com.github.wnameless.aws.pricelist.api.model.savingsplan;
+package com.github.wnameless.aws.pricelist.api;
 
-import lombok.Data;
+import java.io.IOException;
 
-/**
- * 
- * @see <a href=
- *      "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/using-ppslong.html">Using
- *      the bulk API</a>
- * 
- * @author Wei-Ming Wu
- *
- */
-@Data
-public class SavingsPlanProduct {
+import org.junit.jupiter.api.Test;
 
-  String sku;
-  String productFamily;
-  String serviceCode;
-  String usageType;
-  String operation;
-  SavingsPlanProductAttributes attributes;
+import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanIndex;
+
+import okhttp3.logging.HttpLoggingInterceptor.Level;
+
+public class PriceListApiTest {
+
+  @Test
+  public void test() throws IOException {
+    PriceListApi.INSTANCE.setLoggingLevel(Level.NONE);
+
+    System.out.println(
+        SavingsPlanIndex.get().getCurrentVersion().getRegions().get(0));
+
+  }
 
 }

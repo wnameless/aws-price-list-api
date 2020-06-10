@@ -31,6 +31,18 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
+/**
+ * 
+ * {@link PriceListApi } is an enum singleton which contains the only value
+ * {@link PriceListApi.INSTANCE}.
+ * <p>
+ * It creates an {@link OkHttpClient} to do all API requests which are defined
+ * in the {@link PriceListApiService} and eventually powered by the
+ * {@link Retrofit}.
+ * 
+ * @author Wei-Ming Wu
+ *
+ */
 public enum PriceListApi implements PriceListApiService {
 
   INSTANCE;
@@ -46,10 +58,23 @@ public enum PriceListApi implements PriceListApiService {
       new HttpLoggingInterceptor();
   private final PriceListApiService service;
 
+  /**
+   * Returns the logging {@link Level} used on all PriceList API requests and
+   * responses.
+   * 
+   * @return a logging {@link Level}
+   */
   public Level getLoggingLevel() {
     return interceptor.getLevel();
   }
 
+  /**
+   * Sets the logging {@link Level} used on all PriceList API requests and
+   * responses.
+   * 
+   * @param level
+   *          a logging {@link Level}
+   */
   public void setLoggingLevel(Level level) {
     interceptor.setLevel(level);
   }

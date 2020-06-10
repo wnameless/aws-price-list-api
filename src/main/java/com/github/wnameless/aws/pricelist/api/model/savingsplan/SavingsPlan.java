@@ -19,6 +19,15 @@ import java.util.List;
 
 import lombok.Data;
 
+/**
+ * 
+ * @see <a href=
+ *      "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/using-ppslong.html">Using
+ *      the bulk API</a>
+ * 
+ * @author Wei-Ming Wu
+ *
+ */
 @Data
 public class SavingsPlan {
 
