@@ -38,6 +38,6 @@ public class PriceDimension {
   String endRange;
   String unit;
   Map<String, String> pricePerUnit;
-  List<Object> appliesTo;
+  List<String> appliesTo;
 
 }

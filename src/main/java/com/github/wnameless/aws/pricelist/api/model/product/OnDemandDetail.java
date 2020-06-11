@@ -35,6 +35,6 @@ public class OnDemandDetail {
   String sku;
   String effectiveDate;
   Map<String, PriceDimension> priceDimensions;
-  Map<String, ?> termAttributes;
+  Map<String, String> termAttributes;
 
 }

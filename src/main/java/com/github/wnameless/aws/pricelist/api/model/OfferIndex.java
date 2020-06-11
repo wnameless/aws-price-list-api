@@ -70,13 +70,13 @@ public class OfferIndex {
    * Returns an {@link Offer} which matches the product described by the given
    * {@link AWSOffer}.
    * 
-   * @param awsProduct
+   * @param awsOffer
    *          used to find the target {@link Offer}
    * @return an {@link Offer} or null if the given {@link AWSOffer} is not
    *         matched any {@link Offer}
    */
-  public Offer getOffer(AWSOffer awsProduct) {
-    return offers.get(awsProduct.toString());
+  public Offer getOffer(AWSOffer awsOffer) {
+    return offers.get(awsOffer.toString());
   }
 
 }
