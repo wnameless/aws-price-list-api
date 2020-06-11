@@ -17,7 +17,7 @@ package com.github.wnameless.aws.pricelist.api.service;
 
 import com.github.wnameless.aws.pricelist.api.PriceListApi;
 import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
-import com.github.wnameless.aws.pricelist.api.model.product.ProductIndex;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductVersionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanIndex;
@@ -42,10 +42,10 @@ public interface PriceListApiService {
    * Makes a request to the given url which has the pattern like
    * "/offers/v1.0/aws/{servicecode}/index.json".
    * 
-   * @return a {@link Call} can be execute to get a {@link ProductIndex}
+   * @return a {@link Call} can be execute to get a {@link ProductVersionIndex}
    */
   @GET("{url}")
-  Call<ProductIndex> productIndex(
+  Call<ProductVersionIndex> productVersionIndex(
       @Path(value = "url", encoded = true) String url);
 
   /**

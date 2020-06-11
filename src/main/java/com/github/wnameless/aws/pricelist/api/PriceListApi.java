@@ -16,7 +16,7 @@
 package com.github.wnameless.aws.pricelist.api;
 
 import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
-import com.github.wnameless.aws.pricelist.api.model.product.ProductIndex;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductVersionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanIndex;
@@ -94,8 +94,8 @@ public enum PriceListApi implements PriceListApiService {
   }
 
   @Override
-  public Call<ProductIndex> productIndex(String url) {
-    return service.productIndex(url);
+  public Call<ProductVersionIndex> productVersionIndex(String url) {
+    return service.productVersionIndex(url);
   }
 
   @Override

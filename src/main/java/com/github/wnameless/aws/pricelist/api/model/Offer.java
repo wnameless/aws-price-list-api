@@ -18,9 +18,9 @@ package com.github.wnameless.aws.pricelist.api.model;
 import java.io.IOException;
 
 import com.github.wnameless.aws.pricelist.api.PriceListApi;
-import com.github.wnameless.aws.pricelist.api.model.product.ProductIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductVersionIndex;
 
 import lombok.Data;
 
@@ -43,16 +43,41 @@ public class Offer {
   String savingsPlanVersionIndexUrl;
   String currentSavingsPlanIndexUrl;
 
-  public ProductIndex getProductIndex() throws IOException {
-    return PriceListApi.INSTANCE.productIndex(versionIndexUrl).execute().body();
+  /**
+   * Returns a {@link ProductVersionIndex} by consuming the
+   * {@link #versionIndexUrl}.
+   * 
+   * @return a {@link ProductVersionIndex}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
+  public ProductVersionIndex getProductVersionIndex() throws IOException {
+    return PriceListApi.INSTANCE.productVersionIndex(versionIndexUrl).execute()
+        .body();
   }
 
-  public ProductVersion getProductVersion() throws IOException {
+  /**
+   * Returns a {@link ProductVersion} by consuming the
+   * {@link #currentVersionUrl}.
+   * 
+   * @return a {@link ProductVersion}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
+  public ProductVersion getCurrentProductVersion() throws IOException {
     return PriceListApi.INSTANCE.productVersion(currentVersionUrl).execute()
         .body();
   }
 
-  public ProductRegionIndex getProductRegionIndex() throws IOException {
+  /**
+   * Returns a {@link ProductRegionIndex} by consuming the
+   * {@link #currentRegionIndexUrl}.
+   * 
+   * @return a {@link ProductRegionIndex}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
+  public ProductRegionIndex getCurrentProductRegionIndex() throws IOException {
     return PriceListApi.INSTANCE.productRegionIndex(currentRegionIndexUrl)
         .execute().body();
   }

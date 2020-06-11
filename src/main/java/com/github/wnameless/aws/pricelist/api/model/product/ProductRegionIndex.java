@@ -17,6 +17,8 @@ package com.github.wnameless.aws.pricelist.api.model.product;
 
 import java.util.Map;
 
+import com.github.wnameless.aws.pricelist.api.AWSRegion;
+
 import lombok.Data;
 
 /**
@@ -35,5 +37,18 @@ public class ProductRegionIndex {
   String disclaimer;
   String publicationDate;
   Map<String, ProductRegion> regions;
+
+  /**
+   * Returns a {@link ProductRegion} which matches the region described by the
+   * given {@link AWSRegion}.
+   * 
+   * @param awsRegion
+   *          used to find the target {@link ProductRegion}
+   * @return a {@link ProductRegion} or null if the given {@link AWSRegion} is
+   *         not matched any {@link ProductRegion}
+   */
+  public ProductRegion getProductRegion(AWSRegion awsRegion) {
+    return regions.get(awsRegion.getName());
+  }
 
 }

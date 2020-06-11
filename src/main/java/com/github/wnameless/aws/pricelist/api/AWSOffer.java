@@ -20,14 +20,14 @@ import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
 
 /**
  * 
- * {@link AWSProduct} contains the service codes of all Amazon AWS products. It
+ * {@link AWSOffer} contains the service codes of all Amazon AWS products. It
  * allows you to get target {@link Offer} directly with
- * {@link OfferIndex#getOffer(AWSProduct)}.
+ * {@link OfferIndex#getOffer(AWSOffer)}.
  * 
  * @author Wei-Ming Wu
  *
  */
-public enum AWSProduct {
+public enum AWSOffer {
 
   comprehend, mobileanalytics, AWSCertificateManager, AWSIoT, AmazonPersonalize,
   AWSStorageGatewayDeepArchive, transcribe, AppFlow, IngestionServiceSnowball,

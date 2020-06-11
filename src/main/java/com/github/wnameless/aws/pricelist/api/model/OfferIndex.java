@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import com.github.wnameless.aws.pricelist.api.AWSProduct;
+import com.github.wnameless.aws.pricelist.api.AWSOffer;
 import com.github.wnameless.aws.pricelist.api.PriceListApi;
 
 import lombok.Data;
@@ -38,6 +38,14 @@ import lombok.Data;
 @Data
 public class OfferIndex {
 
+  /**
+   * Returns the current {@link OfferIndex} by calling
+   * {@code PriceListApi.INSTANCE.offerIndex()}.
+   * 
+   * @return an {@link OfferIndex}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
   public static OfferIndex get() throws IOException {
     return PriceListApi.INSTANCE.offerIndex().execute().body();
   }
@@ -47,13 +55,27 @@ public class OfferIndex {
   String publicationDate;
   Map<String, Offer> offers;
 
+  /**
+   * Returns a list contains all offers with savings plan existed.
+   * 
+   * @return a list of {@link Offer}
+   */
   public List<Offer> getOffersWithSavingsPlan() {
     return offers.entrySet().stream()
         .filter(o -> o.getValue().getCurrentSavingsPlanIndexUrl() != null)
         .map(Entry::getValue).collect(Collectors.toList());
   }
 
-  public Offer getOffer(AWSProduct awsProduct) {
+  /**
+   * Returns an {@link Offer} which matches the product described by the given
+   * {@link AWSOffer}.
+   * 
+   * @param awsProduct
+   *          used to find the target {@link Offer}
+   * @return an {@link Offer} or null if the given {@link AWSOffer} is not
+   *         matched any {@link Offer}
+   */
+  public Offer getOffer(AWSOffer awsProduct) {
     return offers.get(awsProduct.toString());
   }
 

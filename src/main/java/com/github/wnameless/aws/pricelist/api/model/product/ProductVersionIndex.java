@@ -30,7 +30,7 @@ import lombok.Data;
  *
  */
 @Data
-public class ProductIndex {
+public class ProductVersionIndex {
 
   String formatVersion;
   String disclaimer;
@@ -39,10 +39,25 @@ public class ProductIndex {
   String currentVersion;
   Map<String, ProductVersionUrl> versions;
 
+  /**
+   * Returns the current {@link ProductVersionUrl}.
+   * 
+   * @return the current {@link ProductVersionUrl}
+   */
   public ProductVersionUrl getCurrentProductVersionUrl() {
     return versions.get(currentVersion);
   }
 
+  /**
+   * Returns a {@link ProductVersion} by executing
+   * {@link ProductVersionUrl#getProductVersion()} from the
+   * {@link ProductVersionUrl} returning by
+   * {@link #getCurrentProductVersionUrl()}.
+   * 
+   * @return a {@link ProductVersion}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
   public ProductVersion getCurrentProductVersion() throws IOException {
     return getCurrentProductVersionUrl().getProductVersion();
   }

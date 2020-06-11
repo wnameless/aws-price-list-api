@@ -15,7 +15,10 @@
  */
 package com.github.wnameless.aws.pricelist.api.model.savingsplan;
 
+import java.io.IOException;
 import java.util.List;
+
+import com.github.wnameless.aws.pricelist.api.AWSRegion;
 
 import lombok.Data;
 
@@ -35,5 +38,26 @@ public class SavingsPlanVersion {
   String publicationDate;
   List<SavingsPlanRegionUrl> regions;
   String formatVersion;
+
+  /**
+   * Returns a {@link SavingsPlanRegion} which matches the region described by
+   * the given {@link AWSRegion} by searching in this.{@link #regions}.
+   * 
+   * @param awsRegion
+   *          used to find the target {@link SavingsPlanRegion}
+   * @return a {@link SavingsPlanRegion} or null if he given {@link AWSRegion}
+   *         is not matched any {@link SavingsPlanRegion}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
+  public SavingsPlanRegion getSavingsPlanRegion(AWSRegion awsRegion)
+      throws IOException {
+    for (SavingsPlanRegionUrl region : regions) {
+      if (AWSRegion.fromName(region.getRegionCode()) != null) {
+        return region.getSavingsPlanRegion();
+      }
+    }
+    return null;
+  }
 
 }

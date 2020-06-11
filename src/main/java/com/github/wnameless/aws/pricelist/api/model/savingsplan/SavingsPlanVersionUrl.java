@@ -36,6 +36,14 @@ public class SavingsPlanVersionUrl {
   String publicationDate;
   String offerVersionUrl;
 
+  /**
+   * Returns a {@link SavingsPlanVersion} by consuming the
+   * {@link #offerVersionUrl}.
+   * 
+   * @return a {@link SavingsPlanVersion}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
   public SavingsPlanVersion getSavingsPlanVersion() throws IOException {
     return PriceListApi.INSTANCE.savingsPlanVersion(offerVersionUrl).execute()
         .body();

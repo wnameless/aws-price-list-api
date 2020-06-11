@@ -36,6 +36,13 @@ public class SavingsPlanRegionUrl {
   String regionCode;
   String versionUrl;
 
+  /**
+   * Returns a {@link SavingsPlanRegion} by consuming the {@link #versionUrl}.
+   * 
+   * @return a {@link SavingsPlanRegion}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
   public SavingsPlanRegion getSavingsPlanRegion() throws IOException {
     return PriceListApi.INSTANCE.savingsPlanRegion(versionUrl).execute().body();
   }

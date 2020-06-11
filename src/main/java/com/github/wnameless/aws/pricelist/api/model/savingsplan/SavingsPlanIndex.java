@@ -34,6 +34,14 @@ import lombok.Data;
 @Data
 public class SavingsPlanIndex {
 
+  /**
+   * Returns the current {@link SavingsPlanIndex} by calling
+   * {@code PriceListApi.INSTANCE.savingsPlanIndex()}.
+   * 
+   * @return a {@link SavingsPlanIndex}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
   public static SavingsPlanIndex get() throws IOException {
     return PriceListApi.INSTANCE.savingsPlanIndex().execute().body();
   }
@@ -44,7 +52,15 @@ public class SavingsPlanIndex {
   List<SavingsPlanVersionUrl> versions;
   String formatVersion;
 
-  public SavingsPlanVersion getCurrentVersion() throws IOException {
+  /**
+   * Returns a {@link SavingsPlanVersion} by consuming the
+   * {@link #currentOfferVersionUrl}.
+   * 
+   * @return a {@link SavingsPlanVersion}
+   * @throws IOException
+   *           if any I/O exception happened during the API requesting
+   */
+  public SavingsPlanVersion getCurrentSavingsPlanVersion() throws IOException {
     return PriceListApi.INSTANCE.savingsPlanVersion(currentOfferVersionUrl)
         .execute().body();
   }
