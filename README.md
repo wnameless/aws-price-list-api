@@ -85,7 +85,7 @@ for (SavingsPlan savingsPlan : savingsPlanRegion.getTerms().getSavingsPlan()) {
 ```
 
 ### Logging Level
-All API request is backend by okhttp library, we need to set a logging level to intercepte the log, otherwise nothing will show up even there is an exception happened.
+All API request is backend by okhttp library, we need to set a logging level to intercept the log, otherwise nothing will show up even there is an exception happened.
 ```java
 // Log nothing
 PriceListApi.INSTANCE.setLoggingLevel(Level.NONE);
