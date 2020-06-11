@@ -41,7 +41,7 @@ public enum AWSRegion {
   ap_southeast_1("Asia Pacific (Singapore)"),
   ap_southeast_2("Asia Pacific (Sydney)"),
 
-  ca_central_1("Canada (Central"),
+  ca_central_1("Canada (Central)"),
 
   cn_north_1("China (Beijing)"), //
   cn_northwest_1("China (Ningxia)"),
