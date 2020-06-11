@@ -13,10 +13,25 @@ A Java wrapper to Amazon AWS Price List (web) API.
 </dependency>
 ```
 ## Important
-It's only a Java wrapper to AWS AWS Price List API, aka the bulk API, and it has nothing to do with the AWS AWS Price List Service API, aka the query API. If you need the query API, you should go ask for the Amazon AWS Java SDK library.
+It's only a Java wrapper to
+```diff
++ AWS AWS Price List API +
+```
+, aka the bulk API, and it has nothing to do with the
+```diff
+- AWS Price List Service API -
+```
+, aka the query API. If you need the query API, you should go ask for the [Amazon AWS Java SDK](https://aws.amazon.com/sdk-for-java/) library.
+
+```diff
+
+! Because this library simply provides a wrapper to the bulk API,
+! some of the JSON format response is over 1GB~, if you need to access those products,
+! such as AmazonEC2, please to increase your JVM memory heap first.
+```
 # Quick Start
 
-## OfferIndex
+## OfferIndex <- the entrypoint of all AWS offers
 ```java
 // Get the OfferIndex which contains all offers of AWS
 OfferIndex offerIndex = OfferIndex.get();
@@ -24,7 +39,7 @@ OfferIndex offerIndex = OfferIndex.get();
 // Select an offer called AmazonA2I
 Offer offer = offerIndex.getOffer(AWSOffer.AmazonA2I);
 
-// Get all AmazonA2I products by region
+// Get all AmazonA2I products sorted by region
 ProductRegionIndex productRegionIndex = offer.getCurrentProductRegionIndex();
 
 // Select products under region eu-central-1
@@ -47,7 +62,7 @@ for (OnDemandDetail onDemandDetail : onDemandDetails.values()) {
   }
 }
 ```
-## SavingsPlanIndex
+## SavingsPlanIndex <- the entrypoint of all AWS savinsplan
 ```java
 // Get the SavingsPlanIndex which contains all SavingsPlan of AWS
 SavingsPlanIndex savingsPlanIndex = SavingsPlanIndex.get();
@@ -70,6 +85,7 @@ for (SavingsPlan savingsPlan : savingsPlanRegion.getTerms().getSavingsPlan()) {
 ```
 
 ### Logging Level
+All API request is backend by okhttp library, we need to set a logging level to intercepte the log, otherwise nothing will show up even there is an exception happened.
 ```java
 // Log nothing
 PriceListApi.INSTANCE.setLoggingLevel(Level.NONE);
