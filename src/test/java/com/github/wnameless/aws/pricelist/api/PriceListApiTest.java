@@ -15,80 +15,20 @@
  */
 package com.github.wnameless.aws.pricelist.api;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.IOException;
-import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
-import com.github.wnameless.aws.pricelist.api.model.Offer;
-import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
-import com.github.wnameless.aws.pricelist.api.model.product.OnDemandDetail;
-import com.github.wnameless.aws.pricelist.api.model.product.PriceDimension;
-import com.github.wnameless.aws.pricelist.api.model.product.Product;
-import com.github.wnameless.aws.pricelist.api.model.product.ProductRegion;
-import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
-import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
-import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlan;
-import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanIndex;
-import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanRate;
-import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanRegion;
-import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanVersion;
-
-import okhttp3.logging.HttpLoggingInterceptor.Level;
+import com.github.wnameless.aws.pricelist.api.service.PriceListApiService;
 
 public class PriceListApiTest {
 
   @Test
-  public void test() throws IOException {
-    PriceListApi.INSTANCE.setLoggingLevel(Level.NONE);
-    PriceListApi.INSTANCE.setLoggingLevel(Level.BASIC);
-    PriceListApi.INSTANCE.setLoggingLevel(Level.HEADERS);
-    PriceListApi.INSTANCE.setLoggingLevel(Level.BODY);
-
-    OfferIndex offerIndex = OfferIndex.get();
-
-    Offer offer = offerIndex.getOffer(AWSOffer.AmazonA2I);
-
-    ProductRegionIndex productRegionIndex =
-        offer.getCurrentProductRegionIndex();
-
-    ProductRegion productRegion =
-        productRegionIndex.getProductRegion(AWSRegion.eu_central_1);
-
-    ProductVersion productVersion = productRegion.getProductVersion();
-    for (Product product : productVersion.getProducts().values()) {
-      product.getSku();
-      product.getAttributes().getUsagetype();
-      product.getAttributes().getOperation();
-
-      Map<String, OnDemandDetail> onDemandDetails =
-          productVersion.getTerms().getOnDemand().get(product.getSku());
-      for (OnDemandDetail onDemandDetail : onDemandDetails.values()) {
-        onDemandDetail.getSku();
-        Map<String, PriceDimension> priceDimensions =
-            onDemandDetail.getPriceDimensions();
-        for (PriceDimension priceDimension : priceDimensions.values()) {
-          priceDimension.getPricePerUnit().get("USD");
-        }
-      }
-    }
-
-    SavingsPlanIndex savingsPlanIndex = SavingsPlanIndex.get();
-    SavingsPlanVersion savingsPlanVersion =
-        savingsPlanIndex.getCurrentSavingsPlanVersion();
-
-    SavingsPlanRegion savingsPlanRegion =
-        savingsPlanVersion.getSavingsPlanRegion(AWSRegion.ap_northeast_1);
-
-    for (SavingsPlan savingsPlan : savingsPlanRegion.getTerms()
-        .getSavingsPlan()) {
-      for (SavingsPlanRate rate : savingsPlan.getRates()) {
-        rate.getDiscountedSku();
-        rate.getDiscountedUsageType();
-        rate.getDiscountedOperation();
-        rate.getDiscountedRate();
-      }
-    }
+  public void testPriceListApiInterface() throws IOException {
+    assertTrue(PriceListApi.INSTANCE instanceof PriceListApi);
+    assertTrue(PriceListApi.INSTANCE instanceof PriceListApiService);
   }
 
 }

@@ -51,10 +51,6 @@
 		<version>2.3.0.RELEASE</version>
 	</parent>
 
-	<properties>
-		<java.version>11</java.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -116,7 +112,7 @@
 						<id>default-compile</id>
 						<configuration>
 							<!-- compile everything to ensure module-info contains right entries -->
-							<release>11</release>
+							<release>9</release>
 						</configuration>
 					</execution>
 					<execution>
