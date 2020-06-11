@@ -62,7 +62,7 @@ for (OnDemandDetail onDemandDetail : onDemandDetails.values()) {
   }
 }
 ```
-## SavingsPlanIndex <- the entrypoint of all AWS savinsplan
+## SavingsPlanIndex <- the entrypoint of all AWS savingsplan
 ```java
 // Get the SavingsPlanIndex which contains all SavingsPlan of AWS
 SavingsPlanIndex savingsPlanIndex = SavingsPlanIndex.get();
