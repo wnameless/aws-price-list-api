@@ -17,9 +17,9 @@ package com.github.wnameless.aws.pricelist.api.service;
 
 import com.github.wnameless.aws.pricelist.api.PriceListApi;
 import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
-import com.github.wnameless.aws.pricelist.api.model.product.ProductVersionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductVersionIndex;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanIndex;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanRegion;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanVersion;
@@ -42,6 +42,8 @@ public interface PriceListApiService {
    * Makes a request to the given url which has the pattern like
    * "/offers/v1.0/aws/{servicecode}/index.json".
    * 
+   * @param url
+   *          of pattern like "/offers/v1.0/aws/{servicecode}/index.json"
    * @return a {@link Call} can be execute to get a {@link ProductVersionIndex}
    */
   @GET("{url}")
@@ -52,6 +54,9 @@ public interface PriceListApiService {
    * Makes a request to the given url which has the pattern like
    * "/offers/v1.0/aws/{servicecode}/current/index.json".
    * 
+   * @param url
+   *          of pattern like
+   *          "/offers/v1.0/aws/{servicecode}/current/index.json"
    * @return a {@link Call} can be execute to get a {@link ProductVersion}
    */
   @GET("{url}")
@@ -62,6 +67,9 @@ public interface PriceListApiService {
    * Makes a request to the given url which has the pattern like
    * "/offers/v1.0/aws/{servicecode}/current/region_index.json".
    * 
+   * @param url
+   *          of pattern like
+   *          "/offers/v1.0/aws/{servicecode}/current/region_index.json"
    * @return a {@link Call} can be execute to get a {@link ProductRegionIndex}
    */
   @GET("{url}")
@@ -81,6 +89,9 @@ public interface PriceListApiService {
    * Makes a request to the given url which has the pattern like
    * "/savingsPlan/v1.0/aws/AWSComputeSavingsPlan/{version}/region_index.json".
    * 
+   * @param url
+   *          of pattern like
+   *          "/savingsPlan/v1.0/aws/AWSComputeSavingsPlan/{version}/region_index.json"
    * @return a {@link Call} can be execute to get a {@link SavingsPlanVersion}
    */
   @GET("{url}")
@@ -91,6 +102,9 @@ public interface PriceListApiService {
    * Makes a request to the given url which has the pattern like
    * "/savingsPlan/v1.0/aws/AWSComputeSavingsPlan/{version}/{region}/index.json".
    * 
+   * @param url
+   *          of pattern like
+   *          "/savingsPlan/v1.0/aws/AWSComputeSavingsPlan/{version}/{region}/index.json"
    * @return a {@link Call} can be execute to get a {@link SavingsPlanRegion}
    */
   @GET("{url}")

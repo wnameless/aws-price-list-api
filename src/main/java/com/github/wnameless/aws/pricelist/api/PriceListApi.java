@@ -16,9 +16,9 @@
 package com.github.wnameless.aws.pricelist.api;
 
 import com.github.wnameless.aws.pricelist.api.model.OfferIndex;
-import com.github.wnameless.aws.pricelist.api.model.product.ProductVersionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
+import com.github.wnameless.aws.pricelist.api.model.product.ProductVersionIndex;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanIndex;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanRegion;
 import com.github.wnameless.aws.pricelist.api.model.savingsplan.SavingsPlanVersion;
@@ -34,7 +34,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 /**
  * 
  * {@link PriceListApi} is an enum singleton which contains the only value
- * {@link PriceListApi.INSTANCE}.
+ * {@code PriceListApi.INSTANCE}.
  * <p>
  * It creates an {@link OkHttpClient} to do all API requests which are defined
  * in the {@link PriceListApiService} and eventually powered by the
