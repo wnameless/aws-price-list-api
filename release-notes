@@ -1,2 +1,5 @@
 Version 1.0.0
 + Init
+
+Version 1.0.1
+* Change AWSRegion.saEast1 to AWSRegion.sa_east_1

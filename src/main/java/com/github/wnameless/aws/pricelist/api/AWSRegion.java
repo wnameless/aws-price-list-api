@@ -63,7 +63,7 @@ public enum AWSRegion {
   us_gov_east_1("AWS GovCloud (US-East)"), //
   us_gov_west_1("AWS GovCloud (US)"),
 
-  saEast1("South America (Sao Paulo)");
+  sa_east_1("South America (Sao Paulo)");
 
   private final String location;
 
