@@ -9,7 +9,7 @@ A Java wrapper to Amazon AWS Price List (web) API.
 <dependency>
 	<groupId>com.github.wnameless.aws</groupId>
 	<artifactId>aws-price-list-api</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 </dependency>
 ```
 ## Important
