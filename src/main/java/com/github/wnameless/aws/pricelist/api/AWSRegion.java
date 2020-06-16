@@ -15,6 +15,10 @@
  */
 package com.github.wnameless.aws.pricelist.api;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import com.github.wnameless.aws.pricelist.api.model.product.ProductRegion;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
 
@@ -58,17 +62,17 @@ public enum AWSRegion {
   us_east_1("US East (N. Virginia)"), //
   us_east_2("US East (Ohio)"), //
   us_west_1("US West (N. California)"), //
-  us_west_2("US West (Oregon)"),
+  us_west_2("US West (Oregon)", "US West (Los Angeles)"),
 
   us_gov_east_1("AWS GovCloud (US-East)"), //
-  us_gov_west_1("AWS GovCloud (US)"),
+  us_gov_west_1("AWS GovCloud (US)", "AWS GovCloud (US-West)"),
 
   sa_east_1("South America (Sao Paulo)");
 
-  private final String location;
+  private final String[] locations;
 
-  private AWSRegion(String location) {
-    this.location = location;
+  private AWSRegion(String... locations) {
+    this.locations = locations;
   }
 
   /**
@@ -85,8 +89,8 @@ public enum AWSRegion {
    * 
    * @return the location of a AWS region
    */
-  public String getLocation() {
-    return location;
+  public List<String> getLocations() {
+    return new ArrayList<>(Arrays.asList(locations));
   }
 
   /**
@@ -112,7 +116,7 @@ public enum AWSRegion {
    */
   public static AWSRegion fromLocation(String location) {
     for (AWSRegion awsRegion : AWSRegion.values()) {
-      if (awsRegion.getLocation().equals(location)) return awsRegion;
+      if (awsRegion.getLocations().contains(location)) return awsRegion;
     }
     return null;
   }
