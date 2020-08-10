@@ -35,6 +35,6 @@ public class ReservedDetail {
   String sku;
   String effectiveDate;
   Map<String, PriceDimension> priceDimensions;
-  Map<String, Object> termAttributes;
+  Map<String, String> termAttributes;
 
 }
