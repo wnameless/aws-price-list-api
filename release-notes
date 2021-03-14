@@ -7,3 +7,9 @@ Version 1.0.1
 
 Version 1.0.2
 + Add "US West (Los Angeles)" and "AWS GovCloud (US-West)" locations
+
+Version 1.0.3
++ Add Wavelength Zones
+
+Version 1.0.4
+* Update pom
