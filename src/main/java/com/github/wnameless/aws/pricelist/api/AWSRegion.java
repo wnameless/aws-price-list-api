@@ -39,9 +39,14 @@ public enum AWSRegion {
 
   ap_east_1("Asia Pacific (Hong Kong)"), //
   ap_south_1("Asia Pacific (Mumbai)"), //
-  ap_northeast_1("Asia Pacific (Tokyo)"),
-  ap_northeast_2("Asia Pacific (Seoul)"),
-  ap_northeast_3("Asia Pacific (Osaka-Local)"),
+  ap_northeast_1("Asia Pacific (Tokyo)",
+      // Wavelength Zones
+      "Asia Pacific (KDDI) - Osaka", //
+      "Asia Pacific (KDDI) - Tokyo"),
+  ap_northeast_2("Asia Pacific (Seoul)",
+      // Wavelength Zones
+      "Asia Pacific (SKT) - Daejeon"),
+  ap_northeast_3("Asia Pacific (Osaka-Local)", "Asia Pacific (Osaka)"),
   ap_southeast_1("Asia Pacific (Singapore)"),
   ap_southeast_2("Asia Pacific (Sydney)"),
 
@@ -59,10 +64,23 @@ public enum AWSRegion {
 
   me_south_1("Middle East (Bahrain)"),
 
-  us_east_1("US East (N. Virginia)"), //
+  us_east_1("US East (N. Virginia)", "US East (Boston)", "US East (Houston)",
+      "US East (Miami)", //
+      // Wavelength Zones
+      "US East (Verizon) - Atlanta", //
+      "US East (Verizon) - Boston", //
+      "US East (Verizon) - Dallas", //
+      "US East (Verizon) - Miami", //
+      "US East (Verizon) - New York", //
+      "US East (Verizon) - Washington DC"),
   us_east_2("US East (Ohio)"), //
   us_west_1("US West (N. California)"), //
-  us_west_2("US West (Oregon)", "US West (Los Angeles)"),
+  us_west_2("US West (Oregon)", "US West (Los Angeles)", //
+      // Wavelength Zones
+      "US West (Verizon) - Denver", //
+      "US West (Verizon) - Las Vegas", //
+      "US West (Verizon) - San Francisco Bay Area", //
+      "US West (Verizon) - Seattle"),
 
   us_gov_east_1("AWS GovCloud (US-East)"), //
   us_gov_west_1("AWS GovCloud (US)", "AWS GovCloud (US-West)"),
