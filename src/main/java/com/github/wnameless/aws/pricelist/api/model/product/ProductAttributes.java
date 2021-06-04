@@ -19,6 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
@@ -32,6 +33,7 @@ import lombok.Data;
  * @author Wei-Ming Wu
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class ProductAttributes {
 

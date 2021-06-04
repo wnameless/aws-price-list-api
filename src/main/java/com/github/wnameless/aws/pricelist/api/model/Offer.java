@@ -17,6 +17,7 @@ package com.github.wnameless.aws.pricelist.api.model;
 
 import java.io.IOException;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.wnameless.aws.pricelist.api.PriceListApi;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductRegionIndex;
 import com.github.wnameless.aws.pricelist.api.model.product.ProductVersion;
@@ -33,6 +34,7 @@ import lombok.Data;
  * @author Wei-Ming Wu
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class Offer {
 

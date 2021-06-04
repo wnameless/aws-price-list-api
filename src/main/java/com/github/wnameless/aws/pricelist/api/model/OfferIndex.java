@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.wnameless.aws.pricelist.api.AWSOffer;
 import com.github.wnameless.aws.pricelist.api.PriceListApi;
 
@@ -35,6 +36,7 @@ import lombok.Data;
  * @author Wei-Ming Wu
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class OfferIndex {
 

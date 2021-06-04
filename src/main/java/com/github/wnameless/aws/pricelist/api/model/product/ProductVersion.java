@@ -15,7 +15,10 @@
  */
 package com.github.wnameless.aws.pricelist.api.model.product;
 
+import java.util.List;
 import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
@@ -28,6 +31,7 @@ import lombok.Data;
  * @author Wei-Ming Wu
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class ProductVersion {
 
@@ -38,5 +42,6 @@ public class ProductVersion {
   String publicationDate;
   Map<String, Product> products;
   Terms terms;
+  List<Object> attributesList;
 
 }

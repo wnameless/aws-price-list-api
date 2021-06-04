@@ -15,6 +15,8 @@
  */
 package com.github.wnameless.aws.pricelist.api.model.savingsplan;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 /**
@@ -26,6 +28,7 @@ import lombok.Data;
  * @author Wei-Ming Wu
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class SavingsPlanRate {
 
