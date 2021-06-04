@@ -16,3 +16,6 @@ Version 1.0.4
 
 Version 1.0.5
 + Add @JsonIgnoreProperties(ignoreUnknown = true) to all models
+
+Version 1.0.6
+* Change ProductVersion::attributesList type from List to Object

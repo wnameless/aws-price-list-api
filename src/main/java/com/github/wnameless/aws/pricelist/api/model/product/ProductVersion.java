@@ -15,7 +15,6 @@
  */
 package com.github.wnameless.aws.pricelist.api.model.product;
 
-import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -42,6 +41,6 @@ public class ProductVersion {
   String publicationDate;
   Map<String, Product> products;
   Terms terms;
-  List<Object> attributesList;
+  Object attributesList;
 
 }
