@@ -18,6 +18,7 @@ package com.github.wnameless.aws.pricelist.api.model.savingsplan;
 import java.io.IOException;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.wnameless.aws.pricelist.api.PriceListApi;
 
 import lombok.Data;
@@ -31,6 +32,7 @@ import lombok.Data;
  * @author Wei-Ming Wu
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class SavingsPlanIndex {
 
